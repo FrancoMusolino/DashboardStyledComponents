@@ -4,6 +4,7 @@ import Header from './components/Header';
 import { createGlobalStyle } from "styled-components";
 import Dashboard from './components/Dashboard';
 import RecentlyActivity from './components/RecentlyActivity';
+import Announcement from './components/Announcement';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -38,19 +39,24 @@ const darkTheme = {
   colorText: "#B2B2B2",
   borderPrimary: "1px #e0e0e000 solid",
   H1ColorPrimary: "#fafafa",
+  H5ColorPrimary: "#fafafa",
   pColorPrimary: "#fff",
   asideBgColor: "#303030",
-  asideBgTop: "#686868"
+  asideBgTop: "#686868",
+  bgSelect: "#686868"
 }
 
 const lightTheme = {
   bgColorPrimary: "#fff",
   bgColorSecondary: "#fafafa",
+  colorText: "#efefef",
   borderPrimary: "1px #e0e0e0 solid",
   H1ColorPrimary: "#161E54",
+  H5ColorPrimary: "#303030",
   pColorPrimary: "#686868",
   asideBgColor: "#161E54",
-  asideBgTop: "#1B204A"
+  asideBgTop: "#1B204A",
+  bgSelect: "transparent"
 }
 
 const themes = {
@@ -79,6 +85,7 @@ function App() {
         <MyH1>Dashboard</MyH1>
         <Dashboard />
         <RecentlyActivity />
+        <Announcement />
       </MainContainer>
       <GlobalStyle />
     </ThemeProvider>
