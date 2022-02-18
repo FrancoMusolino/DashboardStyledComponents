@@ -5,6 +5,7 @@ import { createGlobalStyle } from "styled-components";
 import Dashboard from './components/Dashboard';
 import RecentlyActivity from './components/RecentlyActivity';
 import Announcement from './components/Announcement';
+import UpcomingSchedule from './components/UpcomingSchedule';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -31,6 +32,26 @@ const MyH1 = styled.h1`
 color: ${({ theme }) => theme.H1ColorPrimary};
 font-weight: lighter;
 font-size: 2.625rem;
+`
+const MyGridContainer = styled.div`
+  height: 900px;
+`
+
+const MyFirstGridContainer = styled.div`
+ display: inline-grid;
+ grid-template-columns: 1fr;
+ grid-template-rows: 440px 440px;
+ width: 51.18790496760259%;
+ row-gap: 20px;
+`
+
+const MySecondGridContainer = styled.div`
+ position: absolute;
+ display: inline-grid;
+ grid-template-columns: 1fr;
+ grid-template-rows: 440px 440px;
+ width: 48.81209503239741%; /*678 / 13890*/
+ row-gap: 20px;
 `
 
 const darkTheme = {
@@ -83,9 +104,16 @@ function App() {
       <MainContainer>
         <Header theme={theme} setTheme={setTheme} />
         <MyH1>Dashboard</MyH1>
-        <Dashboard />
-        <RecentlyActivity />
-        <Announcement />
+        <MyGridContainer>
+          <MyFirstGridContainer>
+            <Dashboard />
+            <Announcement />
+          </MyFirstGridContainer>
+          <MySecondGridContainer>
+            <RecentlyActivity />
+            <UpcomingSchedule />
+          </MySecondGridContainer>
+        </MyGridContainer>
       </MainContainer>
       <GlobalStyle />
     </ThemeProvider>

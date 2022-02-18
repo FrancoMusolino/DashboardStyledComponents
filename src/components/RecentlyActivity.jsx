@@ -1,21 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const MyAside = styled.aside`
-    position: absolute;
-    width: 48.81209503239741%; /*678 / 13890*/
-    display: inline-block;
-`
-
 const MyContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 78.90855457227139%; /*535 / 678*/
-    height: 210px;
+    height: 80%;
     margin: 0 auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
     padding-left: 4.48598130841121%;  /* 24 /  535*/
     padding-right: 11.77570093457944%;  /* 63 /  535*/
     background-color: ${({ theme }) => theme.asideBgColor};
@@ -25,7 +17,7 @@ const MyContainer = styled.div`
 `
 
 const MyH2Container = styled(MyContainer)`
-    height: 48px;
+    height: 20%;
     padding-top: 0;
     padding-bottom: 0;
     background-color: ${({ theme }) => theme.asideBgTop};
@@ -88,7 +80,7 @@ const MyButton = styled.button`
 
 const RecentlyActivity = () => {
     return (
-        <MyAside>
+        <aside>
             <MyH2Container>
                 <h2>RecentlyActivity</h2>
             </MyH2Container>
@@ -103,7 +95,7 @@ const RecentlyActivity = () => {
                     <MyButton>See All Activity</MyButton>
                 </MySectionBottom>
             </MyContainer>
-        </MyAside>
+        </aside>
     );
 }
 

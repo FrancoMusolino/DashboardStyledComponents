@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbTack, faEllipsis } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
 
 const MyCardContainer = styled.div`
     display: flex;
@@ -35,7 +35,7 @@ const MyP = styled.p`
     color: #686868;
 `
 
-const CardAnnouncement = ({ title, description }) => {
+const CardAnnouncement = ({ title, description, icon, styles }) => {
     return (
         <MyCardContainer>
             <div>
@@ -44,7 +44,7 @@ const CardAnnouncement = ({ title, description }) => {
             </div>
 
             <MyContainerIcon>
-                <FontAwesomeIcon style={{ cursor: "pointer", transform: "rotate(40deg)" }} color="#686868" icon={faThumbTack} />
+                <FontAwesomeIcon style={styles} color="#686868" icon={icon} />
                 <FontAwesomeIcon style={{ cursor: "pointer" }} color="#b2b2b2" icon={faEllipsis} />
             </MyContainerIcon>
         </MyCardContainer>
