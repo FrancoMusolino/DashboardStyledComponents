@@ -48,6 +48,14 @@ const MySectionTop = styled.div`
     & h3{
         margin: 15px 0;
     }
+
+    & p:nth-child(1) {
+        margin-bottom: 30px;
+    }
+
+    & p:nth-child(3) {
+        margin-top: 20px;
+    }
 `
 
 const MySectionBottom = styled.div`

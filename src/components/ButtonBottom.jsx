@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const MyButtonContainer = styled.div`
     max-width: 100%;
+    height: 5%;
     padding: .7rem;
     background-color: #fff;
     overflow: hidden;

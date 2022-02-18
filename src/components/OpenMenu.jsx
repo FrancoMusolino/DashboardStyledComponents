@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 const MyBox = styled.div`
     display: flex;
@@ -13,21 +12,22 @@ const MyBox = styled.div`
     border-radius: 50%;
     border: 1px #b2b2b2 solid;
     color: #FF5151;
+    cursor: pointer;
 `
 
-const OpenMenu = () => {
-    const [open, setOpen] = useState(false);
-
-    const menuIconCliclk = () => {
-        open ? setOpen(false) : setOpen(true);
+const OpenMenu = ({ icon, open, setOpen }) => {
+    const handleOpen = () => {
+        if (open === true) {
+            setOpen(false);
+        } else {
+            setOpen(true)
+        }
     }
 
     return (
         <>
-            <MyBox onClick={menuIconCliclk}>
-                {
-                    open ? <FontAwesomeIcon icon={faAngleLeft} /> : <FontAwesomeIcon icon={faAngleRight} />
-                }
+            <MyBox onClick={handleOpen}>
+                <FontAwesomeIcon icon={icon} />
             </MyBox>
         </>
     );

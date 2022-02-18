@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faBell, faMessage } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faBell, faMessage, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import OpenMenu from './OpenMenu';
 import MySwitch from './MySwitch';
 
@@ -53,11 +53,11 @@ const MyButton = styled.button`
     color: #b2b2b2;
 `
 
-const Header = ({ theme, setTheme }) => {
+const Header = ({ theme, setTheme, setOpen, open }) => {
     return (
         <MyHeader>
             <MyBox divWidth="33.31020124913255%">
-                <OpenMenu />
+                <OpenMenu setOpen={setOpen} open={open} icon={faAngleRight} />
                 <MyButtonContainer>
                     <MyInput type="text" placeholder="Search" />
                     <MyButton >

@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import RecentlyActivity from './components/RecentlyActivity';
 import Announcement from './components/Announcement';
 import UpcomingSchedule from './components/UpcomingSchedule';
+import Sidebar from './components/Sidebar';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -64,7 +65,9 @@ const darkTheme = {
   pColorPrimary: "#fff",
   asideBgColor: "#303030",
   asideBgTop: "#686868",
-  bgSelect: "#686868"
+  bgSelect: "#686868",
+  bgSidebar: "rgba(0, 0, 0, 0.22)",
+  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)"
 }
 
 const lightTheme = {
@@ -77,7 +80,9 @@ const lightTheme = {
   pColorPrimary: "#686868",
   asideBgColor: "#161E54",
   asideBgTop: "#1B204A",
-  bgSelect: "transparent"
+  bgSelect: "transparent",
+  bgSidebar: "rgba(255, 255, 255, 0.60)",
+  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)"
 }
 
 const themes = {
@@ -87,6 +92,7 @@ const themes = {
 
 function App() {
   const [theme, setTheme] = useState("light");
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('theme')) {
@@ -101,8 +107,9 @@ function App() {
 
   return (
     <ThemeProvider theme={themes[theme]}>
+      <Sidebar setOpen={setOpen} open={open} />
       <MainContainer>
-        <Header theme={theme} setTheme={setTheme} />
+        <Header setOpen={setOpen} open={open} theme={theme} setTheme={setTheme} />
         <MyH1>Dashboard</MyH1>
         <MyGridContainer>
           <MyFirstGridContainer>

@@ -5,18 +5,24 @@ import Select from './Select'
 import CardAnnouncement from './CardAnnouncement'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
 
-const MyContainer = styled.div`
-    width: 94.47787610619469%; /*627 / 678 */
-    height: 100%;
-    margin: 0 auto;
+const MyAside = styled.aside`
+    height: 440px;
     border: 1px #e0e0e0 solid; 
     border-radius: 10px;
+    width: 95.41209503239741%;
+    margin: 0 auto;
+`
+
+const MyContainer = styled.div`
+    width: 100%; /*627 / 678 */
+    height: 100%;
+    margin: 0 auto;
 `
 
 const MySecondContainer = styled.div`
     width: 92.64%; /*579 / 625 */
+    height: 90%;
     margin: 0 auto;
-    padding-top: 10px;
     padding-left: 2.48598130841121%;   /*24 /  535 */
     padding-right: 2.48598130841121%;
 
@@ -41,7 +47,7 @@ const MyP = styled.p`
 
 const MyOverflowContainer = styled.div`
     overflow-y: scroll;
-    height: 326px;
+    height: 300px;
 
     &::-webkit-scrollbar{
         background-color: transparent;
@@ -58,7 +64,7 @@ const MyOtherDiv = styled.div`
 
 const UpcomingSchedule = () => {
     return (
-        <aside>
+        <MyAside>
             <MyContainer>
                 <MySecondContainer>
                     <MyH2Container>
@@ -86,8 +92,7 @@ const UpcomingSchedule = () => {
                 </MySecondContainer>
                 <ButtonBottom title="Creat a New Schedule" />
             </MyContainer>
-        </aside>
-
+        </MyAside>
     );
 }
 export default UpcomingSchedule
