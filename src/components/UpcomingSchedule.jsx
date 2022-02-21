@@ -4,6 +4,7 @@ import ButtonBottom from './ButtonBottom'
 import Select from './Select'
 import CardAnnouncement from './CardAnnouncement'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
+import { mobile, table } from '../media/queries'
 
 const MyAside = styled.aside`
     height: 440px;
@@ -11,6 +12,10 @@ const MyAside = styled.aside`
     border-radius: 10px;
     width: 95.41209503239741%;
     margin: 0 auto;
+
+    ${table}{
+        width: 100%;
+    }
 `
 
 const MyContainer = styled.div`
@@ -25,7 +30,6 @@ const MySecondContainer = styled.div`
     margin: 0 auto;
     padding-left: 2.48598130841121%;   /*24 /  535 */
     padding-right: 2.48598130841121%;
-
 `
 
 const MyH2Container = styled.div`

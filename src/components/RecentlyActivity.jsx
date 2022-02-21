@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mobile, table } from '../media/queries'
 
 const MyContainer = styled.div`
     display: flex;
@@ -14,6 +15,11 @@ const MyContainer = styled.div`
     border: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    ${table}{
+        margin: 0;
+    }
+
 `
 
 const MyH2Container = styled(MyContainer)`
@@ -47,6 +53,9 @@ const MySectionTop = styled.div`
 
     & h3{
         margin: 15px 0;
+        ${table}{
+            margin: 0;
+        }
     }
 
     & p:nth-child(1) {
@@ -65,6 +74,16 @@ const MySectionBottom = styled.div`
     width: 90%;
     color: #fff;
     font-weight: 200;
+
+    ${table}{
+        flex-direction: column;
+    }
+
+    & p{
+        ${table}{
+            margin-top: 0;
+        }
+    }
 `
 
 const MyButton = styled.button`
@@ -78,11 +97,17 @@ const MyButton = styled.button`
     font-weight: 600;
     border: none;
     border-radius: 5px;
+    word-spacing: 3px;
     user-select: none;
     
     &:hover{
         background-color: #FF515190;
         cursor: pointer;
+    }
+
+    ${table}{
+        padding: .5rem 17px;
+        min-width: max-content;
     }
 `
 

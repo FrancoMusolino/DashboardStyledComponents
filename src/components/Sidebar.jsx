@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import OpenMenu from './OpenMenu';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import Vector4 from '../img/Vector4.svg'
 import Vector5 from '../img/Vector5.svg'
 import Vector6 from '../img/Vector6.svg'
 import Vector7 from '../img/Vector7.svg'
-
+import { mobile, table } from '../media/queries'
 
 const MyNav = styled.div`
     position: fixed;
@@ -28,6 +28,11 @@ const MyNav = styled.div`
     ${(props) => props.isOpen && css`
         transform: translateX(0);
     `}
+
+    ${table}{
+        width: 10.79136690647482%;
+        padding-top: 10px;
+    }
 `
 
 const MyTitleContainer = styled.div`
@@ -41,6 +46,10 @@ const MyH2 = styled.h2`
     color: ${({ theme }) => theme.H5ColorPrimary};
     line-height: 30px;
     text-align: center;
+    ${table}{
+        font-size: 18px;
+        
+    }
 `
 const MyFirstContainer = styled.div`
     display: flex;
@@ -51,6 +60,10 @@ const MyFirstContainer = styled.div`
     & h4{
         color: #686868;
         font-size: 15px;
+        ${table}{
+                text-align: center;
+                
+            }
     }
 
     & div{
@@ -58,11 +71,26 @@ const MyFirstContainer = styled.div`
         align-items: center;
         height: 7vh;
         color: ${({ theme }) => theme.H5ColorPrimary};
+        ${table}{
+                margin: 5px;
+                
+            }
         & p{
             line-height: 20px;
             margin: 0;
             margin-left: 20px;
             cursor: pointer;
+
+            ${table}{
+                display: none;
+                
+            }
+        }
+        & img{
+            ${table}{
+                margin: auto;
+                
+            }
         }
     }
 `
@@ -74,11 +102,23 @@ const MySecondContainer = styled(MyFirstContainer)`
 `
 
 const Sidebar = ({ setOpen, open }) => {
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleWidth = () => setWidth(window.innerWidth)
+        window.addEventListener('resize', handleWidth)
+
+        return () => {
+            window.removeEventListener('resize');
+        }
+    }, [])
+
+
     return (
         <MyNav isOpen={open ? true : false}>
             <MyTitleContainer>
                 <MyH2>WeHR</MyH2>
-                <OpenMenu setOpen={setOpen} open={open} icon={faAngleLeft} />
+                {width > 1096 && <OpenMenu setOpen={setOpen} open={open} icon={faAngleLeft} />}
             </MyTitleContainer>
             <MyFirstContainer>
                 <h4>MAIN MENU</h4>

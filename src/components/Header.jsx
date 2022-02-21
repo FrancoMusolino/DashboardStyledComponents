@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faBell, faMessage, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import OpenMenu from './OpenMenu';
 import MySwitch from './MySwitch';
+import { mobile, table } from '../media/queries';
+
 
 const MyHeader = styled.header`
     display: flex;
@@ -20,9 +22,18 @@ const MyBox = styled.div`
     justify-content: space-between;
     align-items: center;
     width: ${({ divWidth }) => divWidth} ;
+
+    ${table}{
+        width: 45%;
+        margin-left: .6rem;
+    }
 `
 const MyCustomBox = styled(MyBox)`
     justify-content: space-around;
+
+    ${table}{
+        width: 30%;
+    }
 `
 
 const MyButtonContainer = styled.div`

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { table } from '../media/queries';
 
 const MyBox = styled.div`
     display: flex;
@@ -13,6 +14,14 @@ const MyBox = styled.div`
     border: 1px #b2b2b2 solid;
     color: #FF5151;
     cursor: pointer;
+
+    transition: transform .25s linear;
+
+    ${table}{
+        ${(props) => props.isOpen && css`
+        transform: rotate(180deg);
+    `}
+    }
 `
 
 const OpenMenu = ({ icon, open, setOpen }) => {
@@ -26,7 +35,7 @@ const OpenMenu = ({ icon, open, setOpen }) => {
 
     return (
         <>
-            <MyBox onClick={handleOpen}>
+            <MyBox isOpen={open ? true : false} onClick={handleOpen}>
                 <FontAwesomeIcon icon={icon} />
             </MyBox>
         </>

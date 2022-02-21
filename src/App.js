@@ -7,6 +7,7 @@ import RecentlyActivity from './components/RecentlyActivity';
 import Announcement from './components/Announcement';
 import UpcomingSchedule from './components/UpcomingSchedule';
 import Sidebar from './components/Sidebar';
+import { table, mobile } from './media/queries';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -27,12 +28,28 @@ const MainContainer = styled.div`
   width: 96.45833333333333%;
   position: absolute;
   right: 0;
+
+  ${table}{
+    width: 89.08872901678657%; /*743 / 834*/
+  }
+`
+
+const MyHeaderContainer = styled.div`
+  ${table}{
+    display: flex;
+    justify-content: flex-end;
+  }
 `
 
 const MyH1 = styled.h1`
 color: ${({ theme }) => theme.H1ColorPrimary};
 font-weight: lighter;
 font-size: 2.625rem;
+
+${table}{
+  width: 86.13728129205922%;
+  margin: 28.14px auto;
+}
 `
 const MyGridContainer = styled.div`
   height: 900px;
@@ -44,6 +61,12 @@ const MyFirstGridContainer = styled.div`
  grid-template-rows: 440px 440px;
  width: 51.18790496760259%;
  row-gap: 20px;
+
+ ${table}{
+   display: grid;
+   margin: 0 auto;
+   width: 86.13728129205922%;
+ }
 `
 
 const MySecondGridContainer = styled.div`
@@ -53,6 +76,25 @@ const MySecondGridContainer = styled.div`
  grid-template-rows: 440px 440px;
  width: 48.81209503239741%; /*678 / 13890*/
  row-gap: 20px;
+
+ ${table}{
+   position: static;
+   display: grid;
+   margin: 40px auto;
+   width: 86.13728129205922%;
+   grid-template-columns: 3fr 4fr;
+   grid-template-rows: auto;
+ }
+`
+
+const MyWhiteSpace = styled.div`
+  display: none;
+
+  ${table}{
+    display: block;
+    grid-column: span 2;
+    height: 100px;
+  }
 `
 
 const darkTheme = {
@@ -109,9 +151,11 @@ function App() {
     <ThemeProvider theme={themes[theme]}>
       <Sidebar setOpen={setOpen} open={open} />
       <MainContainer>
-        <Header setOpen={setOpen} open={open} theme={theme} setTheme={setTheme} />
-        <MyH1>Dashboard</MyH1>
+        <MyHeaderContainer>
+          <Header setOpen={setOpen} open={open} theme={theme} setTheme={setTheme} />
+        </MyHeaderContainer>
         <MyGridContainer>
+          <MyH1>Dashboard</MyH1>
           <MyFirstGridContainer>
             <Dashboard />
             <Announcement />
@@ -119,6 +163,7 @@ function App() {
           <MySecondGridContainer>
             <RecentlyActivity />
             <UpcomingSchedule />
+            <MyWhiteSpace></MyWhiteSpace>
           </MySecondGridContainer>
         </MyGridContainer>
       </MainContainer>
