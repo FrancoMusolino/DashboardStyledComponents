@@ -2,12 +2,18 @@ import styled from 'styled-components';
 import React from 'react'
 import Chart1 from '../img/Chart1.svg'
 import Chart2 from '../img/Chart2.svg'
+import { mobile } from '../media/queries';
 
 const MyBox = styled.div`
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     row-gap: 21px;
     column-gap: 15px;
+
+    ${mobile}{
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
 `
 
 const MyCard = styled.div`

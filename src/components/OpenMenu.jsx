@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { table } from '../media/queries';
+import { mobile, table } from '../media/queries';
 
 const MyBox = styled.div`
     display: flex;
@@ -21,6 +21,16 @@ const MyBox = styled.div`
         ${(props) => props.isOpen && css`
         transform: rotate(180deg);
     `}
+
+    ${mobile}{
+        width: 25px;
+        height: 25px;
+
+       
+        ${(props) => props.isOpen && css`
+        transform: rotate(0);
+    `}
+    }
     }
 `
 

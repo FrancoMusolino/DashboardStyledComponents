@@ -2,6 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { mobile, table } from '../media/queries'
 
+const MyAside = styled.aside`
+    ${mobile}{
+        max-width: 603.97px;
+        min-width: 305.56px;
+    }
+`
+
 const MyContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -20,6 +27,10 @@ const MyContainer = styled.div`
         margin: 0;
     }
 
+    ${mobile}{
+        max-width: 100%;
+        padding-right: 16.77570093457944%;
+    }
 `
 
 const MyH2Container = styled(MyContainer)`
@@ -113,7 +124,7 @@ const MyButton = styled.button`
 
 const RecentlyActivity = () => {
     return (
-        <aside>
+        <MyAside>
             <MyH2Container>
                 <h2>RecentlyActivity</h2>
             </MyH2Container>
@@ -128,7 +139,7 @@ const RecentlyActivity = () => {
                     <MyButton>See All Activity</MyButton>
                 </MySectionBottom>
             </MyContainer>
-        </aside>
+        </MyAside>
     );
 }
 

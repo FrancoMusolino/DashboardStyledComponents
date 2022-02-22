@@ -4,6 +4,7 @@ import ButtonBottom from './ButtonBottom'
 import CardAnnouncement from './CardAnnouncement'
 import Select from './Select'
 import { faThumbTack } from '@fortawesome/free-solid-svg-icons'
+import { mobile } from '../media/queries'
 
 const MyAnnouncement = styled.section`
     height: 440px;
@@ -24,6 +25,11 @@ const MyCardContainer = styled.div`
         background-color: transparent;
         color: #444;
     }
+
+    ${mobile}{
+        margin: 0;
+        padding-left: 17px;
+    }
 `
 
 const MyContentContainer = styled.div`
@@ -38,6 +44,10 @@ const MyContentContainer = styled.div`
         color: ${({ theme }) => theme.H1ColorPrimary};
         font-weight: 600;
         font-size: 1.25rem;
+
+        ${mobile}{
+        font-size: 1rem;
+        }   
     }
 `
 

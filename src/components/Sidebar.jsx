@@ -10,6 +10,7 @@ import Vector5 from '../img/Vector5.svg'
 import Vector6 from '../img/Vector6.svg'
 import Vector7 from '../img/Vector7.svg'
 import { mobile, table } from '../media/queries'
+import useWidth from '../hooks/useWidth';
 
 const MyNav = styled.div`
     position: fixed;
@@ -33,12 +34,26 @@ const MyNav = styled.div`
         width: 10.79136690647482%;
         padding-top: 10px;
     }
+
+    ${mobile}{
+        width: 40vw;
+        transform: translateX(-40vw);
+
+        ${(props) => props.isOpen && css`
+        transform: translateX(0);
+    `}
+    }
 `
 
 const MyTitleContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    ${mobile}{
+        flex-direction: column;
+        justify-content: center;
+    }
 `
 
 const MyH2 = styled.h2`
@@ -102,23 +117,14 @@ const MySecondContainer = styled(MyFirstContainer)`
 `
 
 const Sidebar = ({ setOpen, open }) => {
-    const [width, setWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleWidth = () => setWidth(window.innerWidth)
-        window.addEventListener('resize', handleWidth)
-
-        return () => {
-            window.removeEventListener('resize');
-        }
-    }, [])
-
+    const width = useWidth();
 
     return (
         <MyNav isOpen={open ? true : false}>
             <MyTitleContainer>
                 <MyH2>WeHR</MyH2>
                 {width > 1096 && <OpenMenu setOpen={setOpen} open={open} icon={faAngleLeft} />}
+                {width <= 675 && <OpenMenu setOpen={setOpen} open={open} icon={faAngleLeft} />}
             </MyTitleContainer>
             <MyFirstContainer>
                 <h4>MAIN MENU</h4>

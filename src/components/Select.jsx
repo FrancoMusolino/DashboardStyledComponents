@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mobile } from '../media/queries'
 
 const MySelect = styled.select`
     padding: .5rem;
@@ -9,6 +10,10 @@ const MySelect = styled.select`
 
     &:focus{
         outline: none;
+    }
+
+    ${mobile}{
+        width: 50%;
     }
 `
 

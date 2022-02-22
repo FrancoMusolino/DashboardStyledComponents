@@ -5,6 +5,7 @@ import { faSearch, faBell, faMessage, faAngleRight } from '@fortawesome/free-sol
 import OpenMenu from './OpenMenu';
 import MySwitch from './MySwitch';
 import { mobile, table } from '../media/queries';
+import useWidth from '../hooks/useWidth';
 
 
 const MyHeader = styled.header`
@@ -27,12 +28,22 @@ const MyBox = styled.div`
         width: 45%;
         margin-left: .6rem;
     }
+
+    ${mobile}{
+        width: 20%;
+        margin-left: 1rem;
+    }
 `
 const MyCustomBox = styled(MyBox)`
     justify-content: space-around;
 
     ${table}{
         width: 30%;
+    }
+
+    ${mobile}{
+        width: 40%;
+        justify-content: space-between;
     }
 `
 
@@ -45,6 +56,13 @@ const MyButtonContainer = styled.div`
     border:  ${({ theme }) => theme.borderPrimary};
     border-radius: 5px;
     background-color: ${({ theme }) => theme.bgColorSecondary};
+
+    ${mobile}{
+        background-color: transparent;
+        border:  none;
+        width: 20%;
+        padding: 0;
+    }
 `
 
 const MyInput = styled.input`
@@ -56,19 +74,31 @@ const MyInput = styled.input`
     &:focus{
         outline: none;
     }
+
+    ${mobile}{
+        display: none;
+    }
 `
 
 const MyButton = styled.button`
     background-color: transparent;
     border: none;
     color: #b2b2b2;
+
+    ${mobile}{
+        font-size: 20px;
+        padding: 0;
+    }
 `
 
 const Header = ({ theme, setTheme, setOpen, open }) => {
+    const width = useWidth();
+
     return (
         <MyHeader>
             <MyBox divWidth="33.31020124913255%">
-                <OpenMenu setOpen={setOpen} open={open} icon={faAngleRight} />
+                {width > 1096 && <OpenMenu setOpen={setOpen} open={open} icon={faAngleRight} />}
+                {width <= 675 && <OpenMenu setOpen={setOpen} open={open} icon={faAngleRight} />}
                 <MyButtonContainer>
                     <MyInput type="text" placeholder="Search" />
                     <MyButton >

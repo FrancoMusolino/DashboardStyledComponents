@@ -57,6 +57,11 @@ const MyOverflowContainer = styled.div`
         background-color: transparent;
         color: #444;
     }
+
+    ${mobile}{
+        margin: 0;
+        padding-left: 17px;
+    }
 `
 
 const MyOtherDiv = styled.div`

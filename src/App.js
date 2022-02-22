@@ -8,6 +8,7 @@ import Announcement from './components/Announcement';
 import UpcomingSchedule from './components/UpcomingSchedule';
 import Sidebar from './components/Sidebar';
 import { table, mobile } from './media/queries';
+import useWidth from './hooks/useWidth';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -32,6 +33,10 @@ const MainContainer = styled.div`
   ${table}{
     width: 89.08872901678657%; /*743 / 834*/
   }
+
+  ${mobile}{
+    width: 100vw;
+  }
 `
 
 const MyHeaderContainer = styled.div`
@@ -50,6 +55,10 @@ ${table}{
   width: 86.13728129205922%;
   margin: 28.14px auto;
 }
+
+${mobile}{
+  width: 89.74358974358974%;
+}
 `
 const MyGridContainer = styled.div`
   height: 900px;
@@ -67,6 +76,11 @@ const MyFirstGridContainer = styled.div`
    margin: 0 auto;
    width: 86.13728129205922%;
  }
+
+ ${mobile}{
+  width: 89.74358974358974%;
+  grid-template-rows: auto;
+}
 `
 
 const MySecondGridContainer = styled.div`
@@ -85,6 +99,14 @@ const MySecondGridContainer = styled.div`
    grid-template-columns: 3fr 4fr;
    grid-template-rows: auto;
  }
+
+ ${mobile}{
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, 440px) max-content;
+  row-gap: 40px;
+  width: 89.74358974358974%;
+}
 `
 
 const MyWhiteSpace = styled.div`
@@ -134,7 +156,16 @@ const themes = {
 
 function App() {
   const [theme, setTheme] = useState("light");
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const width = useWidth();
+
+  useEffect(() => {
+    if (width <= 1096 && width > 675) {
+      setOpen(true);
+    } else {
+      setOpen(false)
+    }
+  }, [width])
 
   useEffect(() => {
     if (localStorage.getItem('theme')) {

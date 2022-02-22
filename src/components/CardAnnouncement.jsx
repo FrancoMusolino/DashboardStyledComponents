@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
+import { mobile } from '../media/queries';
 
 const MyCardContainer = styled.div`
     display: flex;
@@ -18,6 +19,14 @@ const MyContainerIcon = styled.div`
     display: flex;
     justify-content: space-around;
     width: 10%;
+
+    ${mobile}{
+        width: 20%;
+    }
+`
+
+const MyContentContainer = styled.div`
+    width: 75%;
 `
 
 const MyH5 = styled.h5`
@@ -25,6 +34,10 @@ const MyH5 = styled.h5`
     font-size: 1rem;
     font-weight: 400;
     color: ${({ theme }) => theme.H5ColorPrimary};
+
+    ${mobile}{
+        font-size: .9rem;
+    }
     
 `
 
@@ -38,10 +51,10 @@ const MyP = styled.p`
 const CardAnnouncement = ({ title, description, icon, styles }) => {
     return (
         <MyCardContainer>
-            <div>
+            <MyContentContainer>
                 <MyH5>{title}</MyH5>
                 <MyP>{description}</MyP>
-            </div>
+            </MyContentContainer>
 
             <MyContainerIcon>
                 <FontAwesomeIcon style={styles} color="#686868" icon={icon} />
